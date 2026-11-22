@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Token Radar — pre-token protocols ranked by implied value</title>
+<link rel="stylesheet" href="app.css">
+</head>
+<body>
+<header class="top">
+  <div class="brand">
+    <div class="mark">◉</div>
+    <div>
+      <h1>Token Radar</h1>
+      <p class="sub">Every pre-token protocol DefiLlama tracks, ranked by what its launch would be worth.</p>
+    </div>
+  </div>
+  <div class="meta" id="meta"></div>
+</header>
+
+<nav class="tabs" aria-label="Views">
+  <button type="button" data-view="board" class="tab active">Board</button>
+  <button type="button" data-view="live" class="tab">Live tokens</button>
+  <button type="button" data-view="method" class="tab">Method</button>
+</nav>
+
+<section class="kpis" id="kpis" aria-label="Headline figures"></section>
+
+<section id="view-board" class="view">
+  <div class="picks">
+    <h2>Top picks</h2>
+    <p class="hint">The five highest implied values. A pick is a starting point for research, not a promise of a token.</p>
+    <ol id="picks" class="pick-list"></ol>
+  </div>
+
+  <div class="filters" id="filters">
+    <label>Search <input id="q" type="search" placeholder="Name, slug or category…" autocomplete="off"></label>
+    <label>Category <select id="f-cat"></select></label>
+    <label>Chain <select id="f-chain"></select></label>
+    <label>Min TVL <select id="f-tvl">
+      <option value="0">Any</option>
+      <option value="100000000">$100M+</option>
+      <option value="500000000">$500M+</option>
+      <option value="1000000000">$1B+</option>
+    </select></label>
+    <label class="check"><input id="f-watch" type="checkbox"> Watchlist only</label>
+    <label>Sort <select id="f-sort">
+      <option value="implied">Implied value</option>
+      <option value="tvl">TVL</option>
+      <option value="growth">7-day growth</option>
+      <option value="age">Age</option>
+      <option value="name">Name A–Z</option>
+    </select></label>
+    <label>Value haircut <select id="f-cut">
+      <option value="1">Full comps</option>
+      <option value="0.75">75% of comps</option>
+      <option value="0.5">50% of comps</option>
+    </select></label>
+  </div>
+
+  <p class="count" id="count"></p>
+  <div class="table-wrap">
+    <table id="board">
+      <thead><tr>
+        <th>#</th><th>Protocol</th><th>Category</th><th>Chains</th>
+        <th class="num">TVL</th><th class="num">7d</th><th class="num">Age</th>
+        <th class="num">Peer ×</th><th class="num">Implied value</th><th>Signal</th>
+      </tr></thead>
+      <tbody id="rows"></tbody>
+    </table>
+  </div>
+  <p class="note">Implied value = TVL × peer multiple × growth × maturity × breadth. “Records no token” means DefiLlama records none — it is not proof a token does not exist.</p>
+</section>
+
+<section id="view-detail" class="view" hidden>
+  <button type="button" class="back" id="back">← Back to the board</button>
+  <article id="detail" class="detail"></article>
+</section>
+
+<section id="view-live" class="view" hidden>
+  <h2>Live tokens — the market's own values</h2>
+  <p class="hint">These protocols already trade. Their market caps are the comps the board is priced from, so they are shown here at the market's value — never ranked against the pre-token board.</p>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Protocol</th><th>Category</th><th class="num">TVL</th><th class="num">Market cap</th><th class="num">Mcap / TVL</th><th class="num">7d</th></tr></thead>
+      <tbody id="live-rows"></tbody>
+    </table>
+  </div>
+</section>
+
+<section id="view-method" class="view" hidden>
+  <h2>Method — how an implied value is built</h2>
+  <div id="method"></div>
+  <h3>Peer multiples by category</h3>
+  <p class="hint">Median market-cap / TVL of the live-token protocols in each category (3+ peers). Thin categories use the global median.</p>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Category</th><th class="num">Live peers</th><th class="num">Peer multiple</th></tr></thead>
+      <tbody id="comps"></tbody>
+    </table>
+  </div>
+</section>
+
+<footer>
+  <p id="source"></p>
+  <p class="fine">Implied values are this radar's own model, not a prediction that a token will launch or what it will be worth. Farming costs gas and locks capital; never pay to claim an airdrop, and claim only from links the protocol itself publishes.</p>
+</footer>
+<script src="../data.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
