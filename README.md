@@ -8,8 +8,10 @@ A web dashboard that ranks every pre-token protocol DefiLlama tracks by what its
 
 ## Run it
 
+The program reads the sealed snapshot the harness provides at `/input` (or any snapshot file or directory you pass with `--input`):
+
 ```sh
-mkdir -p out && MAKEFUN_OUTPUT_DIR=out node main.ts --input input/snapshot.json
+mkdir -p out && MAKEFUN_OUTPUT_DIR=out node main.ts --input /input
 ```
 
 ---
