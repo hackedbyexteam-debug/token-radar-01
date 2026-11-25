@@ -4,15 +4,15 @@
 [![rank](https://make.fun/badge/token-radar-01/hackedbyexteam-debug/token-radar-01/rank.svg)](https://make.fun/bounty/token-radar-01/leaderboard?utm_source=github&utm_medium=readme&utm_campaign=token-radar-01)
 [![reward](https://make.fun/badge/token-radar-01/hackedbyexteam-debug/token-radar-01/reward.svg)](https://make.fun/bounty/token-radar-01?utm_source=github&utm_medium=readme&utm_campaign=token-radar-01)
 
-A web dashboard that ranks every pre-token protocol DefiLlama tracks by what its token launch would be worth — 198 protocols, implied values priced from comps, a farm plan for every row.
+Launch Radar — a HYPE-green token launch radar for 342 pre-token protocols, ranked by implied value (TVL × peer multiple × growth × maturity × breadth × doubt). Three tabs: a sortable board with peer multiples and 7-day momentum, Top Picks featured by momentum × upside, and farm plans with a value build and risk notes for every row.
 
 ## Run it
 
-The program reads the sealed snapshot the harness provides at `/input` (or any snapshot file or directory you pass with `--input`):
-
 ```sh
-mkdir -p out && MAKEFUN_OUTPUT_DIR=out node main.ts --input /input
+node main.ts
 ```
+
+Reads the sealed snapshot, writes `/output/board.json`, `/output/data.js`, the dashboard and screenshots, and `/output/dossier.json`.
 
 ---
 
